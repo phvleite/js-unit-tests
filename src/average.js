@@ -23,6 +23,4 @@ const average = (variableArray) => {
   return undefined;
 };
 
-console.log(average([1, 2, 3.8, 4.6, 5.6]));
-
 module.exports = average;
