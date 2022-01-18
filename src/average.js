@@ -19,7 +19,7 @@ const average = (variableArray) => {
       sum += Math.round(element);
     });
     return Math.round(sum / variableArray.length);
-    }
+  }
   return undefined;
 };
 
