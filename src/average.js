@@ -12,27 +12,17 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-function checkArray(variableArray) {
-  variableArray.forEach((element) => {
-    if (typeof element !== 'number') {
-      throw new Error('Informe valores numéricos!');
-    }
-  });
-} 
-
 const average = (variableArray) => {
-  try {
-    checkArray(variableArray);
+  if (variableArray.length !== 0 && variableArray.every((elem) => Number.isFinite(elem))) {
     let sum = 0;
     variableArray.forEach((element) => {
       sum += Math.round(element);
     });
     return Math.round(sum / variableArray.length);
-  } catch (error) {
-    throw error.message;
-  }
+    }
+  return undefined;
 };
 
-console.log(average([]));
+console.log(average([1, 2, 3.8, 4.6, 5.6]));
 
 module.exports = average;
