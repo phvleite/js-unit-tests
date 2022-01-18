@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable no-unused-vars */
 
 /*
@@ -16,6 +17,15 @@
       #VQV!'
 */
 
-const vqv = () => {};
+const vqv = (name, age) => {
+  if (typeof name === 'undefined') {
+    return undefined;
+  }
+  const message = `Oi, meu nome é ${name}!
+Tenho ${age} anos,
+trabalho na Trybe e mando muito em programação!
+#VQV!`;
+  return message;
+};
 
 module.exports = vqv;
