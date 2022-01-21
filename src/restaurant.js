@@ -84,24 +84,38 @@ const cardapio = {
   {
     coxinha: 3.9,
     sopa: 9.9,
+    pastel: 1.5,
   },
   
   drink:
   {
     agua: 3.9,
-    cerveja: 6.9,
+    heineken: 9.9,
+    cocaCola: 6.9,
+    caldoDeCana: 4.5,
   },
 };
 
 const createMenu = (carte) => {
   const menu = {
-     fetchMenu: () => carte,
+    fetchMenu: () => carte,
+    consumption: [],
+    order: (product) => menu.consumption.push(product),
+    pay: () => {
+      let sum = 0;
+      const productList = Object.assign(menu.fetchMenu().food, menu.fetchMenu().drink);
+      menu.consumption.forEach((product) => {
+        sum += productList[product];
+      });
+      sum *= 1.1;
+      return parseFloat(sum.toFixed(2));
+    },
   };
   return menu;
 };
 
-module.exports = createMenu;
+const orderFromMenu = (order, object) => {
+  object.order(order);
+};
 
-const objetoRetornado = createMenu();
-
-console.log(typeof objetoRetornado);
+module.exports = { createMenu, orderFromMenu };
